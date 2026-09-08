@@ -22,11 +22,11 @@ include __DIR__ . '/includes/header.php';
         will emerge victorious after six months of live development and user engagement.
     </p>
     <div class="row text-center">
-        <div class="col"><img src="assets/img/media/CoPilot_Homepage.png" class="img-fluid floating-img"><br><a href="https://sagasphere.beardedviking.org">Copilot Social Site</a><br><a href="https://github.com/BeardedVikingTX/SagaSphere">GitHub Repo</a></div>
-        <div class="col"><img src="assets/img/media/Claude_Homepage.png" class="img-fluid floating-img"><br><a href="https://ravenwarp.beardedviking.org">Claude Social Site</a><br><a href="https://github.com/BeardedVikingTX/RavenWarp">GitHub Repo</a></div>
-        <div class="col"><img src="assets/img/media/Gemini_Homepage.png" class="img-fluid floating-img"><br><a href="https://valkyrin.beardedviking.org">Gemini Social Site</a><br><a href="https://github.com/BeardedVikingTX/Valkyrin">GitHub Repo</a></div>
-        <div class="col"><img src="assets/img/media/ChatGPT_Homepage.png" class="img-fluid floating-img"><br><a href="https://nexora.beardedviking.org">ChatGPT Social Site</a><br><a href="https://github.com/BeardedVikingTX/Nexora">GitHub Repo</a></div>
-        <div class="col"><img src="assets/img/media/DeepSeek_Homepage.png" class="img-fluid floating-img"><br><a href="https://nexusvalhalla.beardedviking.org">DeepSeek Social Site</a><br><a href="https://github.com/BeardedVikingTX/NexusValhalla">GitHub Repo</a></div>
+        <div class="col"><img src="assets/img/CoPilot_home1.png" class="img-fluid floating-img"><br><a href="https://sagasphere.beardedviking.org">Copilot Social Site</a><br><a href="https://github.com/BeardedVikingTX/SagaSphere">GitHub Repo</a></div>
+        <div class="col"><img src="assets/img/Claude_home1.png" class="img-fluid floating-img"><br><a href="https://ravenwarp.beardedviking.org">Claude Social Site</a><br><a href="https://github.com/BeardedVikingTX/RavenWarp">GitHub Repo</a></div>
+        <div class="col"><img src="assets/img/Gemini_home1.png" class="img-fluid floating-img"><br><a href="https://valkyrin.beardedviking.org">Gemini Social Site</a><br><a href="https://github.com/BeardedVikingTX/Valkyrin">GitHub Repo</a></div>
+        <div class="col"><img src="assets/img/ChatGPT_home1.png" class="img-fluid floating-img"><br><a href="https://nexora.beardedviking.org">ChatGPT Social Site</a><br><a href="https://github.com/BeardedVikingTX/Nexora">GitHub Repo</a></div>
+        <div class="col"><img src="assets/img/DeepSeek_Home1.png" class="img-fluid floating-img"><br><a href="https://nexusvalhalla.beardedviking.org">DeepSeek Social Site</a><br><a href="https://github.com/BeardedVikingTX/NexusValhalla">GitHub Repo</a></div>
     </div>
 </section>
 
