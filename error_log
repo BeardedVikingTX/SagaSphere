@@ -1,0 +1,10 @@
+[08-Sep-2026 16:04:46 UTC] PHP Warning:  require_once(/home/beardedviking/sagasphere.beardedviking.org/db_connect.php): Failed to open stream: No such file or directory in /home/beardedviking/sagasphere.beardedviking.org/vote.php on line 3
+[08-Sep-2026 16:04:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/beardedviking/sagasphere.beardedviking.org/db_connect.php' (include_path='.:/opt/alt/php85/usr/share/pear:/opt/alt/php85/usr/share/php:/usr/share/pear:/usr/share/php') in /home/beardedviking/sagasphere.beardedviking.org/vote.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/beardedviking/sagasphere.beardedviking.org/vote.php on line 3
+[08-Sep-2026 16:09:32 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'beardedviking_sagasphere.votes' doesn't exist in /home/beardedviking/sagasphere.beardedviking.org/vote.php:12
+Stack trace:
+#0 /home/beardedviking/sagasphere.beardedviking.org/vote.php(12): PDOStatement->execute()
+#1 {main}
+  thrown in /home/beardedviking/sagasphere.beardedviking.org/vote.php on line 12

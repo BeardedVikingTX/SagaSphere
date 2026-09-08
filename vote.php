@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/cookies.php';
-require_once __DIR__ . '/db_connect.php'; // Your DB connection
+require_once __DIR__ . '/includes/db_connect.php'; // Your DB connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $choice = $_POST['ai_choice'] ?? null;

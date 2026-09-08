@@ -65,3 +65,21 @@ h1, h2, h3 {
     transform: scale(1.05);
     box-shadow: 0 0 15px #00ffe7;
 }
+
+.vote-form .list-group-item {
+    background: rgba(20,20,40,0.9);
+    color: #e0e0e0;
+    border: 1px solid #00ffe7;
+    transition: all 0.3s ease;
+}
+
+.vote-form .list-group-item:hover {
+    background: rgba(0,255,231,0.1);
+    transform: scale(1.02);
+    box-shadow: 0 0 10px #00ffe7;
+}
+
+.vote-form input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #00ffe7;
+}

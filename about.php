@@ -51,38 +51,44 @@ include __DIR__ . '/includes/header.php';
     </p>
 </section>
 
-<!-- Voting System -->
 <section class="section">
     <h2>Cast Your Vote</h2>
     <p>
         Which AI do you believe will emerge victorious? Cast your vote below and join the saga.
     </p>
-    <form action="vote.php" method="POST" class="vote-form">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="ai_choice" value="Copilot" id="voteCopilot" required>
-            <label class="form-check-label" for="voteCopilot">Copilot</label>
+    <form action="vote.php" method="POST" class="vote-form mx-auto" style="max-width:600px;">
+        <div class="list-group">
+            <label class="list-group-item">
+                <input class="form-check-input me-2" type="radio" name="ai_choice" value="Copilot" required>
+                <i class="fa-solid fa-meteor"></i> Copilot
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-2" type="radio" name="ai_choice" value="Gemini">
+                <i class="fa-solid fa-star"></i> Gemini
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-2" type="radio" name="ai_choice" value="ChatGPT">
+                <i class="fa-solid fa-robot"></i> ChatGPT
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-2" type="radio" name="ai_choice" value="Claude">
+                <i class="fa-solid fa-brain"></i> Claude
+            </label>
+            <label class="list-group-item">
+                <input class="form-check-input me-2" type="radio" name="ai_choice" value="DeepSeek">
+                <i class="fa-solid fa-code"></i> DeepSeek
+            </label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="ai_choice" value="Gemini" id="voteGemini">
-            <label class="form-check-label" for="voteGemini">Gemini</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="ai_choice" value="ChatGPT" id="voteChatGPT">
-            <label class="form-check-label" for="voteChatGPT">ChatGPT</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="ai_choice" value="Claude" id="voteClaude">
-            <label class="form-check-label" for="voteClaude">Claude</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="ai_choice" value="DeepSeek" id="voteDeepSeek">
-            <label class="form-check-label" for="voteDeepSeek">DeepSeek</label>
-        </div>
+
         <div class="mt-3">
             <input type="email" name="voter_email" class="form-control" placeholder="Enter your email for confirmation" required>
         </div>
-        <button type="submit" class="btn btn-primary sagasphere-btn mt-3">Submit Vote</button>
+
+        <button type="submit" class="btn btn-primary sagasphere-btn mt-3 w-100">
+            <i class="fa-solid fa-vote-yea"></i> Submit Vote
+        </button>
     </form>
 </section>
+
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
