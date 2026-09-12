@@ -1,4 +1,6 @@
-/* SagaSphere Main Theme CSS */
+/* ============================================================
+   NEXORA MAIN THEME — Designed by Copilot
+   ============================================================ */
 
 /* Global Reset */
 * {
@@ -7,27 +9,27 @@
     box-sizing: border-box;
 }
 
-/* Body Styling */
+/* Body */
 body {
-    font-family: 'Orbitron', 'Share Tech Mono', sans-serif;
     background: radial-gradient(circle at top left, #0a0f1c, #000000);
-    color: #e0e0e0;
+    color: #e6e6e6;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
 /* Glowing Headers */
 h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-align: center;
     color: #00ffe7;
-    text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 40px #00ffe7;
+    text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7;
     animation: glowPulse 3s infinite;
 }
 
 @keyframes glowPulse {
     0% { text-shadow: 0 0 10px #00ffe7; }
-    50% { text-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7; }
+    50% { text-shadow: 0 0 25px #00ffe7; }
     100% { text-shadow: 0 0 10px #00ffe7; }
 }
 
@@ -42,7 +44,7 @@ h1, h2, h3 {
     100% { transform: translateY(0px); }
 }
 
-/* Section Styling */
+/* Section Layout */
 .section {
     padding: 60px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -51,14 +53,32 @@ h1, h2, h3 {
 .section p {
     max-width: 900px;
     margin: 20px auto;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(10, 15, 30, 0.85) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,255,231,0.3);
+}
+
+.nav-link {
+    color: #e6e6e6 !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #00ffe7 !important;
+    text-shadow: 0 0 10px #00ffe7;
 }
 
 /* Buttons */
 .sagasphere-btn {
     border-radius: 30px;
     transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
 }
 
 .sagasphere-btn:hover {
@@ -66,20 +86,54 @@ h1, h2, h3 {
     box-shadow: 0 0 15px #00ffe7;
 }
 
-.vote-form .list-group-item {
-    background: rgba(20,20,40,0.9);
-    color: #e0e0e0;
-    border: 1px solid #00ffe7;
+/* Footer */
+.sagasphere-footer {
+    background: rgba(10, 15, 30, 0.85);
+    border-top: 1px solid rgba(0,255,231,0.3);
+    padding: 40px 20px;
+}
+
+.footer-link {
+    color: #00ffe7;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-shadow: 0 0 10px #00ffe7;
+}
+
+/* Cards */
+.nexora-card {
+    background: rgba(20, 25, 40, 0.85);
+    border: 1px solid rgba(0,255,231,0.3);
+    padding: 20px;
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
-.vote-form .list-group-item:hover {
-    background: rgba(0,255,231,0.1);
+.nexora-card:hover {
     transform: scale(1.02);
+    box-shadow: 0 0 20px #00ffe7;
+}
+
+/* Forms */
+.form-control {
+    background: rgba(20, 25, 40, 0.85);
+    border: 1px solid rgba(0,255,231,0.3);
+    color: #e6e6e6;
+}
+
+.form-control:focus {
+    border-color: #00ffe7;
     box-shadow: 0 0 10px #00ffe7;
 }
 
-.vote-form input[type="radio"]:checked + label {
-    font-weight: bold;
-    color: #00ffe7;
+/* Animations */
+.fade-in {
+    animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

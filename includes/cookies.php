@@ -1,33 +1,36 @@
 <?php
-// Start secure session
-if (session_status() === PHP_SESSION_NONE) {
+require_once __DIR__ . '/database.php';
 
-    // Force secure cookie parameters
+// Secure session configuration
+if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
         'domain' => '',
-        'secure' => true,        // HTTPS ONLY
-        'httponly' => true,      // JS cannot access
-        'samesite' => 'Strict'   // Prevent CSRF
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Strict'
     ]);
-
     session_start();
 }
 
-// Generate a session token if missing
-if (!isset($_SESSION['sagasphere_token'])) {
-    $_SESSION['sagasphere_token'] = hash(
-        'sha256',
-        bin2hex(random_bytes(32)) . microtime(true)
-    );
+// Generate session token
+if (!isset($_SESSION['nexora_token'])) {
+    $_SESSION['nexora_token'] = bin2hex(random_bytes(32));
 }
 
-// Optional: regenerate session ID periodically
-if (!isset($_SESSION['last_regen'])) {
-    $_SESSION['last_regen'] = time();
-} elseif (time() - $_SESSION['last_regen'] > 900) { // 15 minutes
-    session_regenerate_id(true);
-    $_SESSION['last_regen'] = time();
-}
+// Telemetry Logging (NZK-aligned)
+$ipHash = hash('sha256', $_SERVER['REMOTE_ADDR']);
+$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
+$requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+$referer = $_SERVER['HTTP_REFERER'] ?? null;
+
+$stmt = $pdo->prepare("
+    INSERT INTO telemetry_logs (ip_hash, user_agent_category, request_uri, referer, created_at)
+    VALUES (?, ?, ?, ?, NOW())
+");
+
+$userAgentCategory = (preg_match('/bot|crawl|spider/i', $userAgent)) ? 'Bot' : 'Standard Browser';
+
+$stmt->execute([$ipHash, $userAgentCategory, $requestUri, $referer]);
 ?>

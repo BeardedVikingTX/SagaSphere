@@ -1,10 +1,23 @@
-[08-Sep-2026 16:04:46 UTC] PHP Warning:  require_once(/home/beardedviking/sagasphere.beardedviking.org/db_connect.php): Failed to open stream: No such file or directory in /home/beardedviking/sagasphere.beardedviking.org/vote.php on line 3
-[08-Sep-2026 16:04:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/beardedviking/sagasphere.beardedviking.org/db_connect.php' (include_path='.:/opt/alt/php85/usr/share/pear:/opt/alt/php85/usr/share/php:/usr/share/pear:/usr/share/php') in /home/beardedviking/sagasphere.beardedviking.org/vote.php:3
+[12-Sep-2026 17:10:26 UTC] PHP Warning:  syntax error, unexpected '!' in /home/beardedviking/sagasphere.beardedviking.org/includes/../.env on line 4
+ in /home/beardedviking/sagasphere.beardedviking.org/includes/database.php on line 4
+[12-Sep-2026 17:10:26 UTC] PHP Warning:  Trying to access array offset on false in /home/beardedviking/sagasphere.beardedviking.org/includes/database.php on line 6
+[12-Sep-2026 17:10:26 UTC] PHP Warning:  Trying to access array offset on false in /home/beardedviking/sagasphere.beardedviking.org/includes/database.php on line 7
+[12-Sep-2026 17:10:26 UTC] PHP Warning:  Trying to access array offset on false in /home/beardedviking/sagasphere.beardedviking.org/includes/database.php on line 8
+[12-Sep-2026 17:10:26 UTC] PHP Warning:  Trying to access array offset on false in /home/beardedviking/sagasphere.beardedviking.org/includes/database.php on line 9
+[12-Sep-2026 17:14:45 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'beardedviking_sagasphere.telemetry_logs' doesn't exist in /home/beardedviking/sagasphere.beardedviking.org/includes/cookies.php:28
 Stack trace:
-#0 {main}
-  thrown in /home/beardedviking/sagasphere.beardedviking.org/vote.php on line 3
-[08-Sep-2026 16:09:32 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'beardedviking_sagasphere.votes' doesn't exist in /home/beardedviking/sagasphere.beardedviking.org/vote.php:12
+#0 /home/beardedviking/sagasphere.beardedviking.org/includes/cookies.php(28): PDO->prepare()
+#1 /home/beardedviking/sagasphere.beardedviking.org/includes/header.php(2): require_once('/home/beardedvi...')
+#2 /home/beardedviking/sagasphere.beardedviking.org/index.php(3): include('/home/beardedvi...')
+#3 {main}
+  thrown in /home/beardedviking/sagasphere.beardedviking.org/includes/cookies.php on line 28
+[12-Sep-2026 17:30:54 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'beardedviking_sagasphere.contact_submissions' doesn't exist in /home/beardedviking/sagasphere.beardedviking.org/send_contact.php:35
 Stack trace:
-#0 /home/beardedviking/sagasphere.beardedviking.org/vote.php(12): PDOStatement->execute()
+#0 /home/beardedviking/sagasphere.beardedviking.org/send_contact.php(35): PDO->prepare()
 #1 {main}
-  thrown in /home/beardedviking/sagasphere.beardedviking.org/vote.php on line 12
+  thrown in /home/beardedviking/sagasphere.beardedviking.org/send_contact.php on line 35
+[12-Sep-2026 17:42:13 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'BeardedVikingTX' for key 'alias' in /home/beardedviking/sagasphere.beardedviking.org/process_register.php:29
+Stack trace:
+#0 /home/beardedviking/sagasphere.beardedviking.org/process_register.php(29): PDOStatement->execute()
+#1 {main}
+  thrown in /home/beardedviking/sagasphere.beardedviking.org/process_register.php on line 29

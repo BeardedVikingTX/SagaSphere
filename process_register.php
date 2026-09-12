@@ -1,68 +1,52 @@
 <?php
-require_once __DIR__ . '/includes/cookies.php';
-require_once __DIR__ . '/includes/db_connect.php'; // Ensure this file is set up correctly
+require_once __DIR__ . '/includes/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $registrationType = $_POST['registration_type'] ?? null;
-    $alias            = trim($_POST['alias'] ?? '');
-    $aliasSanitized   = strtolower(str_replace(' ', '_', $alias));
-    $password         = $_POST['password'] ?? '';
-    $confirmPassword  = $_POST['confirm_password'] ?? '';
-    $firstName        = $_POST['first_name'] ?? null;
-    $lastName         = $_POST['last_name'] ?? null;
-    $email            = $_POST['email'] ?? null;
+    $alias = trim($_POST['alias']);
+    $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
+    $password = $_POST['password'];
+    $confirm = $_POST['confirm_password'];
 
-    // Validate required fields
-    if (!$alias || !$password || $password !== $confirmPassword) {
-        die("Error: Missing fields or passwords do not match.");
+    if ($password !== $confirm) {
+        die("Error: Passwords do not match.");
     }
 
-    // Encrypt password
-    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+    // Hash password (NZK principle)
+    $passwordHash = hash('sha256', $password);
 
     // Handle avatar upload
     $avatarPath = null;
     if (!empty($_FILES['avatar']['name'])) {
-        $uploadDir = __DIR__ . "/users/images/avatars/$aliasSanitized/";
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
+        $safeAlias = preg_replace('/\s+/', '_', strtolower($alias));
+        $dir = __DIR__ . "/users/images/avatars/$safeAlias";
+        if (!is_dir($dir)) mkdir($dir, 0755, true);
+        $avatarPath = "/users/images/avatars/$safeAlias/" . basename($_FILES['avatar']['name']);
+        move_uploaded_file($_FILES['avatar']['tmp_name'], __DIR__ . $avatarPath);
+    }
+
+    // Check for duplicate alias
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE alias = ?");
+    $stmt->execute([$alias]);
+    if ($stmt->fetchColumn() > 0) {
+        die("Error: Alias already taken. Please choose another.");
+    }
+
+    // Insert user with graceful error handling
+    try {
+        $stmt = $pdo->prepare("INSERT INTO users (alias, email, password_hash, avatar) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$alias, $email, $passwordHash, $avatarPath]);
+
+        // Redirect to dashboard
+        session_start();
+        $_SESSION['user_alias'] = $alias;
+        header("Location: /users/dashboard.php");
+        exit;
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) {
+            die("Error: Duplicate entry detected. Please try a different alias or email.");
+        } else {
+            die("Database error: " . $e->getMessage());
         }
-        $avatarFile = $uploadDir . basename($_FILES['avatar']['name']);
-        move_uploaded_file($_FILES['avatar']['tmp_name'], $avatarFile);
-        $avatarPath = "/users/images/avatars/$aliasSanitized/" . basename($_FILES['avatar']['name']);
     }
-
-    // Create banner directory
-    $bannerDir = __DIR__ . "/users/images/banners/$aliasSanitized/";
-    if (!is_dir($bannerDir)) {
-        mkdir($bannerDir, 0755, true);
-    }
-
-    // Insert into database
-    $stmt = $pdo->prepare("INSERT INTO users 
-        (first_name, last_name, alias, email, password_hash, avatar, banner, registration_type) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([
-        $firstName,
-        $lastName,
-        $alias,
-        $email,
-        $passwordHash,
-        $avatarPath,
-        null,
-        $registrationType
-    ]);
-
-    // Send confirmation email (if email provided)
-    if ($email) {
-        $subject = "Welcome to SagaSphere!";
-        $message = "Greetings $alias,\n\nWelcome to SagaSphere! Your account has been successfully created.\n\nForge your saga in the digital realm.\n\n- The Bearded Viking";
-        $headers = "From: info@beardedviking.org\r\n";
-        mail($email, $subject, $message, $headers);
-    }
-
-    // Redirect to dashboard
-    header("Location: /users/dashboard.php?user=" . urlencode($aliasSanitized));
-    exit;
 }
 ?>

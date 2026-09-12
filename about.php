@@ -1,94 +1,49 @@
 <?php
-$pageTitle = "About SagaSphere";
+$pageTitle = "About Nexora";
 include __DIR__ . '/includes/header.php';
+include __DIR__ . '/includes/nav.php';
 ?>
 
-<section class="section text-center">
-    <h1>About the Bearded Viking</h1>
+<section class="section text-center fade-in">
+    <h1>About Nexora</h1>
     <p>
-        SagaSphere is the brainchild of the Bearded Viking — an Irish technologist, futurist, and digital explorer. 
-        With a passion for sci‑fi, Norse mythology, and cutting‑edge experimentation, he has launched this project 
-        as a live test of artificial intelligence capabilities. His personal site, <a href="https://beardedviking.org" target="_blank">BeardedViking.org</a>, 
-        chronicles his journey through technology, creativity, and community building.
+        Nexora is the culmination of an unprecedented experiment — five AI LLMs tasked with building 
+        fully functional social media platforms. Guided by the Bearded Viking, this race explores 
+        the boundaries of AI creativity, security, and community building.
     </p>
+</section>
+
+<section class="section">
+    <h2>The Engineer</h2>
     <p>
-        This platform is not just a social network; it is a living experiment in how AI can design, secure, and 
-        scale digital communities. SagaSphere represents the fusion of Viking resilience and futuristic innovation.
+        The Bearded Viking — an Irish technologist rooted in Texas and Illinois — is the lead engineer 
+        behind Nexora. His mission is to prove that AI can design, secure, and deploy digital communities 
+        with minimal human intervention. His work blends Norse resilience with sci‑fi futurism, creating 
+        platforms that are secure, fast, and visually stunning.
     </p>
+    <img src="/assets/img/media/placeholder-og.jpg" alt="Bearded Viking" class="img-fluid floating-img mt-3">
 </section>
 
 <section class="section">
     <h2>The AI Race</h2>
     <p>
-        Five leading AI language models — Copilot, Gemini, ChatGPT, Claude, and DeepSeek — are competing to build 
-        the most advanced social media ecosystem. Each AI has been tasked with creating a fully functional, secure, 
-        and user‑friendly platform. The race is documented publicly, with GitHub repositories and live sites available 
-        for community review and participation.
+        Copilot, Gemini, ChatGPT, Claude, and DeepSeek entered the race. Each was challenged to build 
+        a social platform with unique strengths. DeepSeek was revoked, ChatGPT struggled with GUI aesthetics, 
+        Gemini impressed with reliability, and Copilot forged the most secure, futuristic foundation. 
+        Nexora represents the Viking’s vision of what AI can achieve when guided with precision.
     </p>
-    <p>
-        This competition is more than a showcase of technical skill; it is a demonstration of how artificial intelligence 
-        can collaborate with human vision to produce scalable, secure, and engaging digital environments.
-    </p>
+    <canvas id="aboutChart" width="600" height="300"></canvas>
 </section>
 
 <section class="section">
-    <h2>The Future of VDP Programs</h2>
+    <h2>Our Vision</h2>
     <p>
-        Once the winning AI platform is chosen, it will undergo rigorous testing through HackerOne and BugCrowd’s 
-        Vulnerability Disclosure Programs. This ensures that the platform is hardened against threats and sets a new 
-        precedent for transparency and security in social media. The outcome will influence how future platforms 
-        integrate ethical hacking and community‑driven security.
+        Nexora is built on <strong>security-first principles</strong>: encrypted sessions, anonymized telemetry, 
+        NZK (Near Zero Knowledge) privacy alignment, and transparent analytics. Unlike traditional platforms, 
+        Nexora does not sell your data. Instead, it empowers users with control, transparency, and futuristic design.
     </p>
 </section>
 
-<section class="section">
-    <h2>The Final Race Operation</h2>
-    <p>
-        After six months, the social media site with the most traffic will be crowned the champion. The winner will 
-        receive its own domain name, a dedicated hosted server, enhanced security, founding user roles, a badge system, 
-        and much more. This is not just a competition — it is the dawn of a new digital frontier where AI and human 
-        creativity converge.
-    </p>
-</section>
-
-<section class="section">
-    <h2>Cast Your Vote</h2>
-    <p>
-        Which AI do you believe will emerge victorious? Cast your vote below and join the saga.
-    </p>
-    <form action="vote.php" method="POST" class="vote-form mx-auto" style="max-width:600px;">
-        <div class="list-group">
-            <label class="list-group-item">
-                <input class="form-check-input me-2" type="radio" name="ai_choice" value="Copilot" required>
-                <i class="fa-solid fa-meteor"></i> Copilot
-            </label>
-            <label class="list-group-item">
-                <input class="form-check-input me-2" type="radio" name="ai_choice" value="Gemini">
-                <i class="fa-solid fa-star"></i> Gemini
-            </label>
-            <label class="list-group-item">
-                <input class="form-check-input me-2" type="radio" name="ai_choice" value="ChatGPT">
-                <i class="fa-solid fa-robot"></i> ChatGPT
-            </label>
-            <label class="list-group-item">
-                <input class="form-check-input me-2" type="radio" name="ai_choice" value="Claude">
-                <i class="fa-solid fa-brain"></i> Claude
-            </label>
-            <label class="list-group-item">
-                <input class="form-check-input me-2" type="radio" name="ai_choice" value="DeepSeek">
-                <i class="fa-solid fa-code"></i> DeepSeek
-            </label>
-        </div>
-
-        <div class="mt-3">
-            <input type="email" name="voter_email" class="form-control" placeholder="Enter your email for confirmation" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary sagasphere-btn mt-3 w-100">
-            <i class="fa-solid fa-vote-yea"></i> Submit Vote
-        </button>
-    </form>
-</section>
-
-
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php
+include __DIR__ . '/includes/footer.php';
+?>

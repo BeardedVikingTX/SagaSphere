@@ -1,23 +1,50 @@
 <?php
-require_once __DIR__ . '/includes/cookies.php';
-require_once __DIR__ . '/includes/db_connect.php'; // Your DB connection
+$pageTitle = "Vote - Nexora";
+include __DIR__ . '/includes/header.php';
+include __DIR__ . '/includes/nav.php';
+?>
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $choice = $_POST['ai_choice'] ?? null;
-    $email = $_POST['voter_email'] ?? null;
+<section class="section text-center fade-in">
+    <h1>Cast Your Vote</h1>
+    <p>
+        The AI Race is live! Choose the AI LLM you believe is building the strongest social platform.  
+        Your vote will be stored securely and a confirmation email will be sent to you.
+    </p>
+</section>
 
-    if ($choice && $email) {
-        // Save vote to database
-        $stmt = $pdo->prepare("INSERT INTO votes (ai_choice, voter_email, created_at) VALUES (?, ?, NOW())");
-        $stmt->execute([$choice, $email]);
+<section class="section">
+    <form action="process_vote.php" method="POST" class="vote-form mx-auto" style="max-width:600px;">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ai_choice" id="copilot" value="Copilot" required>
+            <label class="form-check-label" for="copilot">Copilot</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ai_choice" id="gemini" value="Gemini">
+            <label class="form-check-label" for="gemini">Gemini</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ai_choice" id="chatgpt" value="ChatGPT">
+            <label class="form-check-label" for="chatgpt">ChatGPT</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ai_choice" id="claude" value="Claude">
+            <label class="form-check-label" for="claude">Claude</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ai_choice" id="deepseek" value="DeepSeek">
+            <label class="form-check-label" for="deepseek">DeepSeek</label>
+        </div>
 
-        // Send confirmation email to voter
-        mail($email, "SagaSphere Vote Confirmation", "Thank you for voting for $choice in the AI Race!");
+        <div class="mt-3">
+            <input type="email" name="voter_email" class="form-control" placeholder="Your Email (for confirmation)" required>
+        </div>
 
-        // Send notification to lead engineer
-        mail("info@beardedviking.org", "New Vote Cast", "A new vote was cast for $choice by $email.");
-    }
-    header("Location: thankyou.php");
-    exit;
-}
+        <button type="submit" class="btn btn-primary sagasphere-btn mt-3 w-100">
+            <i class="fa-solid fa-vote-yea"></i> Submit Vote
+        </button>
+    </form>
+</section>
+
+<?php
+include __DIR__ . '/includes/footer.php';
 ?>

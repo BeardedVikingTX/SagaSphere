@@ -1,0 +1,85 @@
+/* SagaSphere Main Theme CSS */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Orbitron', 'Share Tech Mono', sans-serif;
+    background: radial-gradient(circle at top left, #0a0f1c, #000000);
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+
+/* Glowing Headers */
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #00ffe7;
+    text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 40px #00ffe7;
+    animation: glowPulse 3s infinite;
+}
+
+@keyframes glowPulse {
+    0% { text-shadow: 0 0 10px #00ffe7; }
+    50% { text-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7; }
+    100% { text-shadow: 0 0 10px #00ffe7; }
+}
+
+/* Floating Images */
+.floating-img {
+    animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Section Styling */
+.section {
+    padding: 60px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.section p {
+    max-width: 900px;
+    margin: 20px auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.sagasphere-btn {
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.sagasphere-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ffe7;
+}
+
+.vote-form .list-group-item {
+    background: rgba(20,20,40,0.9);
+    color: #e0e0e0;
+    border: 1px solid #00ffe7;
+    transition: all 0.3s ease;
+}
+
+.vote-form .list-group-item:hover {
+    background: rgba(0,255,231,0.1);
+    transform: scale(1.02);
+    box-shadow: 0 0 10px #00ffe7;
+}
+
+.vote-form input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #00ffe7;
+}
